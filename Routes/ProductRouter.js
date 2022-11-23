@@ -1,17 +1,28 @@
 const express = require("express");
 const Product = require("../models/Product");
-
+const auth = require ("../middleware/auth");
+const authAdmin = require ("../middleware/authAdmin");
 const ProductRouter = express.Router();
 
-ProductRouter.post("/product", async (req, res) => {
+ProductRouter.post("/product", auth, authAdmin, async (req, res) => {
     const {
         title,
         description,
         price,
-        stock
+        stock,
+        categoryId,
+        image
     } = req.body
     try {
-        if (!title || !description || !price || !stock) {
+        const product = await Product.findOne({title})
+        if (product) {
+            return res.status(400).json({
+                success: false,
+                message: "Product already exists"
+            })
+            
+        }
+        if (!title || !description || !price || !stock || !image) {
             return res.status(400).json({
                 success: false,
                 message: "All fields are required"
@@ -32,17 +43,17 @@ ProductRouter.post("/product", async (req, res) => {
             });
         }
 
-        if (price == 0) {
+        if (!price) {
             return res.status(400).json({
                 success: false,
-                message: "Need to add a price"
+                message: "Price is required"
             });
         }
 
-        if (stock == 0) {
+        if (!stock) {
             return res.status(400).json({
                 success: false,
-                message: "Need to add stock"
+                message: "Stock is required"
             });
         }
 
@@ -50,7 +61,9 @@ ProductRouter.post("/product", async (req, res) => {
             title,
             description,
             price,
-            stock
+            stock,
+            category: categoryId, 
+            image
         })
 
         await producto.save()
@@ -86,12 +99,13 @@ ProductRouter.get("/products", async (req, res) => {
 
 
 
-ProductRouter.get("/product/:id", async (req, res) => {
+ProductRouter.get("/product/:id",  async (req, res) => {
     const {
         id
     } = req.params
     try {
-        let producto = await Product.findById(id);
+        let producto = await Product.findById(id).populate("category");
+        // let producto = await Product.findById(id).populate({path: "category", select: "title"});
         return res.status(200).json({
             success: true,
             producto,
@@ -106,7 +120,7 @@ ProductRouter.get("/product/:id", async (req, res) => {
     }
 })
 
-ProductRouter.put("/product/:id", async (req, res) => {
+ProductRouter.put("/product/:id", auth, authAdmin, async (req, res) => {
     const {
         id
     } = req.params
@@ -132,7 +146,7 @@ ProductRouter.put("/product/:id", async (req, res) => {
 
 })
 
-ProductRouter.delete("/product/:id", async (req, res) =>{
+ProductRouter.delete("/product/:id", auth, authAdmin, async (req, res) =>{
    const {id} = req.params 
 
    try {

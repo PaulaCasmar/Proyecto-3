@@ -1,10 +1,20 @@
 const express = require ("express");
 const Category = require ("../models/Category");
 const CategoryRouter = express.Router();
+const auth = require ("../middleware/auth");
+const authAdmin = require ("../middleware/authAdmin");
 
-CategoryRouter.post("/category", async (req, res)=>{
+CategoryRouter.post("/category", auth, authAdmin, async (req, res)=>{
     const {title} = req.body
 try {
+    const category = await Category.findOne({title})
+        if (category) {
+            return res.status(400).json({
+                success: false,
+                message: "Category already exists"
+            })
+            
+        }
     if (!title) {
         return res.status(400).json({
             success: false,
@@ -78,7 +88,7 @@ CategoryRouter.get("/category/:id", async (req, res)=>{
     }
 })
 
-CategoryRouter.put("/category/:id", async (req, res)=> {
+CategoryRouter.put("/category/:id", auth, authAdmin, async (req, res)=> {
     const {id} = req.params
     const {title} = req.body
     try {
@@ -95,7 +105,7 @@ CategoryRouter.put("/category/:id", async (req, res)=> {
     }
 })
 
-CategoryRouter.delete("/category/:id", async (req, res)=>{
+CategoryRouter.delete("/category/:id", auth, authAdmin, async (req, res)=>{
     const {id} = req.params
 try {
     await Category.findByIdAndDelete(id)

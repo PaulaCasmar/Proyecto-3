@@ -28,12 +28,18 @@ const userSchema = new mongoose.Schema({
    
     password:{
         type: String,
-        minlength: 8,
+        minlength: 6,
         required: true
     },
 
+    role: {
+        type: Number,
+        default: 0,
+    },
+
     cart:{
-        type: Array
+        type: Array,
+        default: []
     }
    
     

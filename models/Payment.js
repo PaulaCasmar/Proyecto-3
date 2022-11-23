@@ -1,24 +1,52 @@
-const mongoose = require ("mongoose"); 
+const mongoose = require("mongoose");
 
 const paymentSchema = new mongoose.Schema({
 
-    cart:{
-        type:Array,
-        required: true
-    },
-    user:{
-        type:Array,
-        required: true
-    },
-     
-    adress: {
+    user_id: {
         type: String,
-        maxlenght: 450,
-        minlength: 10,
-        required: true
+        required: true,
     },
-     
-    
-}, {timestamps:true});
+
+    name: {
+        type: String,
+        required: true,
+    },
+
+    surname:{
+        type: String,
+        required: true,
+    },
+
+    email: {
+        type: String,
+        required: true,
+    },
+
+    phone:{
+        type: String,
+        required: true,
+    },
+
+    adress: {
+        type: Object
+    },
+
+    paymentID: {
+        type: String,
+        required: true,
+    },
+
+    cart: {
+        type: Array,
+        default: []
+    },
+
+
+
+
+
+}, {
+    timestamps: true
+});
 
 module.exports = mongoose.model("Payment", paymentSchema);
