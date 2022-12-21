@@ -1,0 +1,23 @@
+.Form{
+    width: 79%;
+    margin: auto;
+   border: #c67100 solid 1px;
+   padding: 25px;
+      border-radius: 10px;
+      box-shadow: 5px 5px 7px;
+       ;
+}
+
+.login{
+    margin-top: 90px;
+    
+}
+
+.form-text{
+        padding-top: 10px;
+}
+
+.reg{
+    margin-bottom: 364px;
+    margin-top: 20px;
+}

@@ -7,6 +7,15 @@ const categorySchema = new mongoose.Schema({
         minlength: 5,
         required: true
     },
+    image:{
+        type: Object,
+        required:true
+    },
+
+    products: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Product"
+    }]
      
     
 }, {timestamps:true});

@@ -1,0 +1,93 @@
+.PAM{
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.pam1{
+    height: 210px;
+    border-radius: 15px;
+    margin: auto;
+    margin-bottom: 50px;
+   
+}
+
+.pam2{
+    border-radius: 15px;
+    height: 200px;
+    margin: auto;
+    margin-left:70px;
+    margin-top: 20px;
+    align-items: center;
+    box-shadow: 5px 5px 7px;
+    
+}
+
+.home{
+    margin-top: 150px
+}
+
+.intro{
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    width: 75%;
+}
+
+
+.intro2{
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    width: 75%;
+}
+
+
+.photoH {
+    margin-top: 77px;
+    height: 97px;
+    width: 100%;
+    background-image: url("../images/ivy5.jpg");
+}
+.texthome {
+width: 65%;
+margin: auto;
+text-align: justify;
+}
+
+.textped{
+    width: 65%;
+    /* margin-top: 50px; */
+text-align: justify;
+margin: auto;
+margin-bottom: 20px;
+margin-top: 10px;
+}
+/* 
+.pam1{
+   margin-left: 40px;
+} */
+
+.joyas, .titleA{
+    color: #65499c;
+    font-weight: bolder;
+    margin-top: 5px;
+    padding: 10px;
+}
+
+.fotos{
+    margin: auto;
+}
+
+.quieres{
+    color: #65499c; 
+    font-weight: bold;
+}
+
+.galeria div .img{
+height: 200px;
+width: 200px;
+}
+
+
+

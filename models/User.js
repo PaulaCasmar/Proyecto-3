@@ -40,7 +40,13 @@ const userSchema = new mongoose.Schema({
     cart:{
         type: Array,
         default: []
+    },
+
+    adress:{
+        type: String,
     }
+
+
    
     
 }, {timestamps:true});

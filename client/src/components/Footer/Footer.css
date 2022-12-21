@@ -1,0 +1,17 @@
+.contact{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    
+    background-color:#65499c ;
+   
+}
+
+.sn,
+.pam {
+    margin: auto;
+    padding-top: 11px;
+    padding-bottom: 11px;
+}
+
+

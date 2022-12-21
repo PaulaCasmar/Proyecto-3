@@ -1,0 +1,19 @@
+.register {
+    margin-top: 90px;
+    
+}
+
+.FormR {
+ 
+    margin: auto;
+    border: #c67100 solid 1px;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 7px;
+    width: 79%;
+}
+
+.log {
+    margin-bottom: 197px;
+    margin-top: 20px;
+}

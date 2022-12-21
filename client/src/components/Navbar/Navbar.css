@@ -1,0 +1,38 @@
+.perfil {
+    margin: auto;
+}
+
+
+
+.logo2 {
+    height: 50px;
+}
+
+.nav-item,
+.nav-link {
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown-menu {
+    background-color: #ffa000;
+}
+
+.user .BiUserCircle {
+    justify-items: end;
+}
+
+.cart .BiCart {
+    justify-items: end;
+}
+
+.nav-item a {
+    color: white !important;
+}
+
+/* .navbar-toggler-icon{
+    color: white !important;
+} */
+
+
+/* #9575cd  #65499c */

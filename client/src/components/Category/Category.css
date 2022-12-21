@@ -1,0 +1,94 @@
+/* ADD CATEGORY */
+
+.AddCategory{
+    margin-top: 90px;
+    text-decoration: underline;
+}
+
+.fotoC{
+    margin-top: 20px;
+}
+
+.FormAC{
+    width: 79%;
+    margin: auto;
+   border: #c67100 solid 1px;
+   padding: 25px;
+      border-radius: 10px;
+      box-shadow: 5px 5px 7px;
+      margin-bottom: 483px;
+}
+
+.PhotoC{
+    border-radius: 10px;
+    width: 30%;
+    margin-top: 20px;
+}
+
+.buttonAC{
+    margin-bottom: 10px;
+}
+
+/* CATEGORIES */
+
+.Cat{
+    margin-top: 90px;
+    margin-bottom: 20px;
+    text-decoration: underline;
+ 
+}
+
+.card{
+    box-shadow: 3px 3px 6px !important;
+}
+.categoriesCard{
+    display: flex;
+    flex-wrap: wrap;
+       width: 60%;
+   margin: auto;
+
+}
+.btnC{
+    margin-bottom: 15px;
+}
+
+.card{
+    padding: auto;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+
+.botonAdmi{
+    margin-bottom: 15px;
+  
+}
+
+.productos{
+    width: 0%;
+    padding: auto;
+    margin: auto;
+    display: flex;
+   margin-bottom: 20px;
+}
+
+.row{
+    margin: auto;
+    align-self: center;
+}
+
+.photoPr{
+    margin-top:70px;
+    height: 97px;
+    width: 100%;
+    background-image: url("../images/plant.jpg");
+}
+
+.Ca{
+
+    margin-top: -60px;
+    font-weight: 700;
+    color: antiquewhite;
+    margin-bottom: 60px;
+}
+

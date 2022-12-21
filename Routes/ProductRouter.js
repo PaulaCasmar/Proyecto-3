@@ -2,6 +2,7 @@ const express = require("express");
 const Product = require("../models/Product");
 const auth = require ("../middleware/auth");
 const authAdmin = require ("../middleware/authAdmin");
+const Category = require("../models/Category");
 const ProductRouter = express.Router();
 
 ProductRouter.post("/product", auth, authAdmin, async (req, res) => {
@@ -66,7 +67,13 @@ ProductRouter.post("/product", auth, authAdmin, async (req, res) => {
             image
         })
 
-        await producto.save()
+        await producto.save();
+        await Category.findByIdAndUpdate(categoryId, {
+            $push: {
+                products: producto._id
+            }
+        }
+            )
         return res.status(200).json({
             success: true,
             producto,
@@ -96,8 +103,6 @@ ProductRouter.get("/products", async (req, res) => {
         });
     }
 })
-
-
 
 ProductRouter.get("/product/:id",  async (req, res) => {
     const {

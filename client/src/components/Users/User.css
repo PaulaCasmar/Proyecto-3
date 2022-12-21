@@ -1,0 +1,106 @@
+/* PROFILE */
+
+
+.usuario{
+    margin-top: 150px;
+    margin-bottom: 242px;
+}
+
+.modU{
+    text-decoration: none;
+    margin-bottom: 301px;
+}
+
+.text{
+    color: black ;
+}
+
+.datos{
+    color: #c67100;
+}
+
+.dato{
+    text-decoration: none;
+}
+
+.form-group{
+    padding: 10px;
+}
+
+.ModB{
+    margin-top: 20px;
+}
+
+.ModUser{
+    margin: auto;
+    margin-top: 140px;
+   width: 50%;
+}
+
+/* USUARIOS */
+
+.usuarios{
+    margin-top: 90px;
+}
+
+.box {
+    position: relative;
+    border-radius: 3px;
+    background: #ffffff;
+    border-top: 3px solid #d2d6de;
+    margin-bottom: 20px;
+    width: 100%;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+.box-widget .widget-user-header {
+    padding: 20px;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+.widget-user-desc {
+    color:black;
+     margin-top: 0;
+}
+.widget-user-username {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 25px;
+    font-weight: 300;
+    color:black;
+}
+
+.bg-yellow {
+    background-color: #c7a4ff !important;
+}
+
+.botonAdmiU{
+    margin: auto;
+    padding: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+.container{
+    width: 50%;
+}
+
+.col-md-4{
+    margin: auto;
+}
+
+/* USER */
+
+.box{
+    box-shadow: 3px 3px 5px;
+}
+
+.datosUser{
+    margin-top: 10px;
+}
+
+.arrow {
+    width: 0% !important;
+  
+}

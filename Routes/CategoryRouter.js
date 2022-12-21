@@ -5,7 +5,7 @@ const auth = require ("../middleware/auth");
 const authAdmin = require ("../middleware/authAdmin");
 
 CategoryRouter.post("/category", auth, authAdmin, async (req, res)=>{
-    const {title} = req.body
+    const {title, image} = req.body
 try {
     const category = await Category.findOne({title})
         if (category) {
@@ -21,6 +21,7 @@ try {
             message: "Title is required"
         });
     }
+    
 
     if (title.length < 5) {
         return res.status(400).json({
@@ -37,7 +38,8 @@ try {
     }
 
     let categoria = new Category({
-        title
+        title,
+        image
     })
 
     await categoria.save()
@@ -75,7 +77,7 @@ CategoryRouter.get("/categories", async (req, res) =>{
 CategoryRouter.get("/category/:id", async (req, res)=>{
     const {id} = req.params
     try {
-        let categoria = await Category.findById(id);
+        let categoria = await Category.findById(id).populate({path:"products", select:"title price image"});
         return res.status(200).json({
             success: true, 
             categoria

@@ -20,7 +20,8 @@ UserRouter.post("/register", async (req, res) => {
         surname,
         email,
         phone,
-        password
+        password, 
+        adress
     } = req.body
     try {
         const user = await User.findOne({
@@ -123,6 +124,7 @@ UserRouter.post("/register", async (req, res) => {
             surname,
             email,
             phone,
+            adress,
             password: passwordHash
         });
 
@@ -147,7 +149,8 @@ UserRouter.post("/register", async (req, res) => {
 
 UserRouter.get("/users", auth, authAdmin, async (req, res) => {
     try {
-        let users = await User.find({}).select("name email")
+        let users = await User.find({}).select("name surname email phone adress")
+        console.log(users)
         if (!users) {
             return res.status(400).json({
                 succes: false,
@@ -189,14 +192,12 @@ UserRouter.get("/user", auth, async (req, res) => {
     }
 })
 
-UserRouter.put("/user", auth, authAdmin, async (req, res) => {
-    let user = await User.findById(req.user.id)
-    // const {
-    //     email,
-    //     phone,
-    //     password
-    // } = req.body
+UserRouter.get("/user/:id", auth, authAdmin, async (req, res) => {
+    const {
+        id
+    } = req.params
     try {
+        let user = await User.findById(id);
         if (!user)
             return res.status(400).json({
                 succes: false,
@@ -204,15 +205,120 @@ UserRouter.put("/user", auth, authAdmin, async (req, res) => {
             })
         return res.status(200).json({
             success: true,
-            message: "User updated successfully",
             user,
         })
-
     } catch (error) {
         return res.status(500).json({
             success: false,
             message: error.message
         })
+    }
+})
+
+// UserRouter.put("/user/:userid", auth, authAdmin, async (req, res) => {
+//     const {
+//         userid
+//     } = req.params
+//     console.log(id)
+//     const {
+//         name,
+//         surname,
+//         email,
+//         adress,
+//         phone,
+//         password,
+//     } = req.body
+//     try {
+//         // const user = await User.findById(userid)
+//         // const name = user.name
+//         // const surname = user.surname
+//         // const email = user.email
+//         // const adress = user.adress
+//         // const phone = user.phone
+//         // const password = user.password
+//         let passwordHash = bcrypt.hashSync(password, salt);
+//         await User.findByIdAndUpdate(userid, {
+//             name,
+//             surname,
+//             email,
+//             adress,
+//             phone,
+//             password: passwordHash
+//         })
+//         return res.status(200).json({
+//             success: true,
+//             message: (`Los datos del usuario ${name} ${surname} han sido modificados con éxito`),
+
+//         })
+
+//     } catch (error) {
+//         console.log(error.message)
+//         return res.status(500).json({
+//             success: false,
+//             message: error.message
+//         })
+
+//     }
+// }) // mirar que se puede modificar y quien puede modificarlo
+
+
+UserRouter.put("/usuario/:id", auth, authAdmin, async (req, res) => {
+    const { id } = req.params;
+    const { name, password, email, surname, phone, adress } = req.body;
+    
+    try {
+        const user = await User.findById(id)
+        const password = user.password
+      let passHash = bcrypt.hashSync(password, salt);
+      await User.findByIdAndUpdate(id, {
+        name,
+        email, 
+        surname, 
+        phone, 
+        adress, 
+        password: passHash,
+      });
+  
+      return res.status(200).json({
+        success: true,
+        message: "Usuario modificado correctamente",
+      });
+    } catch (error) {
+      return res.status(500).json({
+        success: false,
+        message: error.message,
+      });
+    }
+  });
+
+//   copiar ruta anterior sin req.params
+
+UserRouter.put("/profile", auth, async (req, res) => {
+   
+    const { name, password, email, surname, phone, adress } = req.body;
+    
+    try {
+        const user = await User.findById(req.user.id)
+        const Password = user.password
+      let passHash = bcrypt.hashSync(password, salt);
+      await User.findByIdAndUpdate(req.user.id, {
+        name,
+        email, 
+        surname, 
+        phone, 
+        adress, 
+        password: passHash,
+      });
+  
+      return res.status(200).json({
+        success: true,
+        message: "Usuario modificado correctamente",
+      });
+    } catch (error) {
+      return res.status(500).json({
+        success: false,
+        message: error.message,
+      });
     }
 })
 
@@ -222,6 +328,22 @@ UserRouter.delete("/user/:id", auth, authAdmin, async (req, res) => {
     } = req.params
     try {
         await User.findByIdAndDelete(id)
+        return res.status(200).json({
+            success: true,
+            message: "User deleted succesfully"
+        })
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: error.message
+        })
+    }
+})
+
+UserRouter.delete("/user", auth, async (req, res) => {
+
+    try {
+        await User.findByIdAndDelete(req.user.id)
         return res.status(200).json({
             success: true,
             message: "User deleted succesfully"
@@ -265,8 +387,9 @@ UserRouter.post("/login", async (req, res) => {
         });
         return res.status(200).json({
             succes: true,
-            message: "Login successfull",
-            accessToken
+            message: "Login successful",
+            accessToken,
+            user
         });
 
     } catch (error) {
