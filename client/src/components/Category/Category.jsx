@@ -2,13 +2,14 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams, useNavigate } from "react-router-dom"
-import {BsFillCartPlusFill} from "react-icons/bs"
+import { BsFillCartPlusFill } from "react-icons/bs"
 
 const Category = () => {
     const [category, setCategory] = useState([])
-        const token = localStorage.getItem("token")
+    const token = localStorage.getItem("token")
     const role = localStorage.getItem("role")
     const navigate = useNavigate();
+
     useEffect(() => {
         const getCategory = async () => {
             const response = await axios.get("http://localhost:5000/api/categories");
@@ -60,20 +61,20 @@ const Category = () => {
 
                                         <Link to={`categories/${categorias._id}`} className="btnC btn btn-primary" style={{ backgroundColor: "#c67100" }}>Ir a {categorias.title}</Link>
                                         <div>
-                                        <div>
-                                        {
-                                            role == 1 ? (<Link><button onClick={() => { deleteCategory(categorias._id) }}  className="botonAdmi btn btn-outline-secondary btn-sm">Borrar</button> </Link>) : (<></>)
-                                        }
-                                        </div>
-                                        <div>
-                                        {
-                                            role == 1 ? (
-                                                <Link to={`/modify/${categorias._id}`}> <button  className="btn btn-outline-dark btn-sm">Modificar</button></Link>) : (<></>)
+                                            <div>
+                                                {
+                                                    role == 1 ? (<Link><button onClick={() => { deleteCategory(categorias._id) }} className="botonAdmi btn btn-outline-secondary btn-sm">Borrar</button> </Link>) : (<></>)
+                                                }
+                                            </div>
+                                            <div>
+                                                {
+                                                    role == 1 ? (
+                                                        <Link to={`/modify/${categorias._id}`}> <button className="btn btn-outline-dark btn-sm">Modificar</button></Link>) : (<></>)
 
-                                        }
+                                                }
+                                            </div>
                                         </div>
-                                        </div>
-                                        <button className="botoncart btn btn-outline-dark btn-sm"><BsFillCartPlusFill/></button>
+
                                     </div>
                                 </div>
                                 // </Link>

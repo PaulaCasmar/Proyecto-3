@@ -29,6 +29,10 @@
     margin-bottom: 10px;
 }
 
+.btnAP{
+    margin-top: 10px;
+}
+
 /* PRODUCTOS */
 
 .products{
@@ -78,6 +82,12 @@
 
 .tajeta{
     border-color: #c67100 !important ;
+}
+
+.arrowP{
+    width: 5% !important;
+    margin-bottom: 10px;
+    
 }
 
 /* PRODUCTO */

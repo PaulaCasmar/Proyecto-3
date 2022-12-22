@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import {BsArrowLeftSquare} from "react-icons/bs"
+import { Link } from "react-router-dom";
 
 const ModUser = () => {
 
@@ -179,6 +180,11 @@ const ModUser = () => {
                         Modificar
                     </button>
                                         </div>
+                                        <div className="arrow">
+                  <Link to={"/users"}>
+                  < BsArrowLeftSquare/>
+                  </Link>
+                  </div>
                                     </div>
                                 </div>
                             </div>

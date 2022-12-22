@@ -31,6 +31,7 @@ const Products = () => {
                         <Link key={joyas._id} to={`/product/${joyas._id}`}>
                             <div className="productos">
                                 {/* <div className="row row-cols-1 row-cols-md-2 g-4"> */}
+                                
                                     <div className="col">
                                         <div className="tarjeta card">
                                             <img src={joyas.image.url} className="card-img-top" alt="Product" />

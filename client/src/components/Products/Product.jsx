@@ -3,6 +3,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import {BsFillCartPlusFill} from "react-icons/bs"
+import { BsArrowLeftSquare } from "react-icons/bs"
+
 
 
 const Product = () =>{
@@ -75,7 +77,11 @@ role == 1?(
 }
 <button className="botoncart btn btn-outline-dark btn-sm"><BsFillCartPlusFill/></button>
 
-
+ <div className="arrowP">
+                  <Link to={"/products"}>
+                  < BsArrowLeftSquare/>
+                  </Link>
+                  </div>
 
 {/* {<Link>
 role == 1?( <button onClick={deleteProduct}>Modificar</button>):(<></>)

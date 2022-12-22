@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import {BsFillCartPlusFill} from "react-icons/bs"
+
 
 
 
@@ -71,6 +73,7 @@ const CategoryId = () => {
                                                 <p>Precio:{productos.price}€</p>
 
                                             </div>
+                                            <button className="botoncart btn btn-outline-dark btn-sm"><BsFillCartPlusFill/></button>
                                         </div>
                                     </div>
                                 </div>

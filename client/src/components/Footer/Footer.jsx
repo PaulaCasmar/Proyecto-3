@@ -19,7 +19,7 @@ const Footer = () => {
             <a href='https://www.instagram.com/plantesambmagia/' className='me-4 text-reset' target="_blank">
               <MDBIcon fab icon="instagram" className="icon" style= {{color: 'rgb(0, 0, 0)'}}/>
             </a>
-            <a href='https://www.instagram.com/plantesambmagia/' className='me-4 text-reset' target="_blank">
+            <a  onClick={() => window.location = 'mailto:plantesambmagia@gmail.com'} className='me-4 text-reset' target="_blank">
               <MDBIcon  icon="envelope" className="icon" style= {{color: 'rgb(0, 0, 0)'}}/>
             </a>
 

@@ -2,6 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { BsArrowLeftSquare } from "react-icons/bs"
+import { Link } from "react-router-dom";
 
 const AddProduct = () => {
   const navigate = useNavigate();
@@ -19,9 +21,9 @@ const AddProduct = () => {
   const [errorM, setErrorM] = useState();
   const [successM, setSuccessM] = useState();
 
-   useEffect (()=>{
-    const getCategory =  async ()  => {
-      const resC = await axios.get ("http://localhost:5000/api/categories")
+  useEffect(() => {
+    const getCategory = async () => {
+      const resC = await axios.get("http://localhost:5000/api/categories")
       console.log(resC)
       setCategorias(resC.data.categorias)
     }
@@ -54,7 +56,7 @@ const AddProduct = () => {
       console.log(error.response)
     }
   };
-// console.log(image)
+  // console.log(image)
   const handleChange = (e) => {
     const { name, value } = e.target;
     setProduct({ ...product, [name]: value });
@@ -75,24 +77,24 @@ const AddProduct = () => {
       );
       console.log(res.data);
       setSuccessM(res.data.message)
-    setTimeout(()=>{
-      navigate("/")
-        // window.location.href="/products"
-    }, 2000)
+      setTimeout(() => {
+        // navigate("/new_product")
+        window.location.href = "/new_product"
+      }, 2000)
     } catch (error) {
       console.log(error.response)
       setErrorM(error.res.data.message)
-        setTimeout(()=>{
-            // window.location.href="/new_product"
-            navigate("/new_product")
-        }, 2000)
+      setTimeout(() => {
+        // window.location.href="/new_product"
+        navigate("/new_product")
+      }, 2000)
     }
   };
 
   return (
     <div>
-      
-      
+
+
 
       <h1 className="AddProduct">Añadir producto</h1>
       <div className="FormAP">
@@ -143,13 +145,13 @@ const AddProduct = () => {
           </div>
           <div>
 
-          <select className="form-select" name="categoryId" onChange={handleChange} aria-label="Default select example">
-                                <option selected>Selecciona...</option>
-                                {categorias.map(e => (
-                                    <option key={e._id} value={e._id}>{e.title}</option>
+            <select className="form-select" name="categoryId" onChange={handleChange} aria-label="Default select example">
+              <option selected>Selecciona...</option>
+              {categorias.map(e => (
+                <option key={e._id} value={e._id}>{e.title}</option>
 
-                                ))}
-                            </select>
+              ))}
+            </select>
             {/* <select name="" id="">
             {
               categorias.map(categoria => {
@@ -159,12 +161,17 @@ const AddProduct = () => {
               })
             }
             </select> */}
-            <input type="file" name="file" onChange={handleUpload} className="fotoP"/>
-      <img src={image.url} className="PhotoP" />
+            <input type="file" name="file" onChange={handleUpload} className="fotoP" />
+            <img src={image.url} className="PhotoP" />
           </div>
-          <button type="submit" className="btn btn-primary" style={{ backgroundColor: "#c67100" }}>
+          <button type="submit" className="btnAP btn btn-primary" style={{ backgroundColor: "#c67100" }}>
             Add
           </button>
+          <div className="arrow">
+            <Link to={"/products"}>
+              < BsArrowLeftSquare />
+            </Link>
+          </div>
         </form>
         <div
           className="alert alert-primary"
